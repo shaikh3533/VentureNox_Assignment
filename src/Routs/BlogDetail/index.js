@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { FaEye } from 'react-icons/fa';
+import { FaEye, FaSpinner } from 'react-icons/fa';
 import GetData from "../../Api/GetData";
 import classes from '../../UI/Blogs.module.css'
 
@@ -26,7 +26,6 @@ const BlogDetail = (props) => {
                             Posted on October 6th 2021
                             <span className="ms-4"><FaEye className='mx-3 fs-2' />563 views</span>
                         </small>
-                        <small className={`ms-auto fs-1 fw-bold ${classes.colorRed}`}>lmoml{props.count}</small>
                     </div>
                     <div style={{ flex: "1 1 auto" }}>
                         <div className="my-3">
@@ -46,7 +45,11 @@ const BlogDetail = (props) => {
                         </div>
                     </div>
                 </div> :
-                <p>Loading</p>
+                <div className="d-flex flex-column h-100">
+                    <div className="my-auto mx-auto">
+                        <FaSpinner className={`fs-1 fw-1 ${classes.colorRed}`} />
+                    </div>
+                </div>
             }
         </div>
     );

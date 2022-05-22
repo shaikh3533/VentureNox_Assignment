@@ -7,6 +7,7 @@ import BlogCompnnent from '../../Components/BlogComponent';
 import { connect } from 'react-redux';
 import GetData from '../../Api/GetData';
 
+
 function Blogs(props) {
 
     const [blogsList, setBlogsList] = useState([])
@@ -70,10 +71,11 @@ function Blogs(props) {
                     {blogsList.slice(0, blogsVisible).map(each => {
                         return (
                             <div className='col-md-6 col-lg-4'>
-                                <BlogCompnnent data={each} Increment={Increment} />
+                                < BlogCompnnent data={each} Increment={Increment} />
                             </div>
                         )
-                    })}
+                    })
+                    }
                     <div className="text-center my-5">
                         {blogsList.length > 3 && (
                             blogsVisible < blogsList.length ? (
