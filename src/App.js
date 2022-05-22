@@ -1,24 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import {
+  BrowserRouter,
+  Route,
+  Routes,
+} from "react-router-dom";
+import './UI/App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Blogs from './Routs/Blog';
+import { legacy_createStore } from 'redux';
+import BlogDetail from './Routs/BlogDetail';
+import Reducers from './Redux/Reducers';
+import { Provider } from 'react-redux'
 
 function App() {
+
+  const store = legacy_createStore(Reducers)
+  store.subscribe(() => {
+    console.log('current state', store.getState());
+  });
+  store.dispatch({
+    type: 'INCREMENT',
+    id:'1'
+  });
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Blogs />} />
+          <Route path="/Blog/:id" element={<BlogDetail />} />
+        </Routes>
+      </BrowserRouter>
+    </Provider>
   );
 }
 
