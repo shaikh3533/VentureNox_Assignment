@@ -87,18 +87,17 @@ function Blogs(props) {
                             )
                         )}
                     </div>
-
-                    {
-                        Object.keys(props.state).map((each, i) => {
-                            console.log({i})
-                            return (
-                                <>
-                                    {i !== 0 && i !== 1 && <p key={i}>{each}{props.state[each]}</p>}
-                                </>
-                            )
-                        })
-                    }
-                    {console.log(props, 'curent sttttate')}
+                    <div className='card shadow bg_lightGrey'>
+                        {
+                            Object.keys(props.state).map((each, i) => {
+                                return (
+                                    <>
+                                        {i !== 0 && i !== 1 && <h5 className='m-3' key={i}>Blog with Title <span className='text-primary '>"{each}"</span> was viewed <span className='text-success'>"{props.state[each]}"</span> times</h5>}
+                                    </>
+                                )
+                            })
+                        }
+                    </div>
                 </div>
             </div>
         </>
@@ -107,7 +106,6 @@ function Blogs(props) {
 
 
 function mapStateToProps(state) {
-    console.log(state);
     return {
         BlogNo: state.BlogNo,
         state: state

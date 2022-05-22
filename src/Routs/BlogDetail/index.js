@@ -11,7 +11,6 @@ const BlogDetail = (props) => {
     useEffect(() => {
 
         GetData.BlogDetail(parseInt(id)).then(res => {
-            console.log({ res })
             setSingleBlog(res.data)
         })
     }, [id])
